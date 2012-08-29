@@ -1,0 +1,70 @@
+<template name="step1" client_enabled="true">
+
+  <p>Enter your name</p>
+
+  <form datalink="person">
+    <label for="firstName">First Name:</label>
+    <input id="firstName" name="firstName" placeholder="First Name" type="text" tabindex=1 />
+
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" name="lastName" placeholder="Last Name" type="text" tabindex=2 />
+  </form>
+
+</template>
+
+<template name="step2" client_enabled="true">
+
+  <p>Enter your address</p>
+
+  <form datalink="address">
+    <label for="address1">Address 1:</label>
+    <input id="address1" name="address1" placeholder="Address 1" type="text" tabindex=1 />
+
+    <label for="address2">Address 2:</label>
+    <input id="address2" name="address2" placeholder="Address 2" type="text" tabindex=2 />
+
+    <label for="city">City:</label>
+    <input id="city" name="city" placeholder="City" type="text" tabindex=2 />
+
+    <label for="state">State:</label>
+    <select id="state" name="state">
+      {{each(i, state) mappedStates}}
+        <option value="${state.abbrv}"> -- ${state.name} -- </option>
+      {{/each}}
+    </select>
+  </form>
+
+</template>
+
+<template name="step3" client_enabled="true">
+
+  <p>Summary</p>
+
+  <p>
+    <b>First Name:</b> $[model.person.firstName]
+  </p>
+
+  <p>
+    <b>Last Name:</b> $[model.person.lastName]
+  </p>
+
+  <p>
+    <b>Address 1:</b> $[model.address.address1]
+  </p>
+
+  <p>
+    <b>Address 2:</b> $[model.address.address2]
+  </p>
+
+  <p>
+    <b>City:</b> $[model.address.city]
+  </p>
+
+  <p>
+    <b>State:</b> $[model.address.state]
+  </p>
+</template>
+
+<div id="steps"></div>
+<input id="backBtn" type="button" value="back" />
+<input id="forwardBtn" type="button" value="forward" />
